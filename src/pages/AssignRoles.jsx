@@ -28,7 +28,7 @@ export default function AssignRoles() {
     if (!userId || !role) return alert("Please select user and role");
 
     try {
-      await axios.put(
+      await axios.post(
         `${import.meta.env.VITE_API_URL}/api/admin/update-user-role/${userId}`,
         { role },
         { headers: { Authorization: `Bearer ${token}` } }
