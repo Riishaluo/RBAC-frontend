@@ -13,7 +13,7 @@ export default function Teams() {
   useEffect(() => {
     const fetchTeams = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/admin/teams", {
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/admin/teams`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setTeams(res.data);
@@ -27,7 +27,7 @@ export default function Teams() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/admin/users", {
+        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/admin/users`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         console.log(res.data.filter(u => !u.isAdmin))
@@ -44,7 +44,7 @@ export default function Teams() {
     if (!name) return alert("Enter team name");
     try {
       const res = await axios.post(
-        "http://localhost:5000/api/admin/teams",
+        `${process.env.REACT_APP_API_URL}/api/admin/teams`,
         { name },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -60,7 +60,7 @@ export default function Teams() {
     if (!selectedUser || !selectedTeam) return alert("Select user and team");
     try {
       await axios.post(
-        "http://localhost:5000/api/admin/assign-team",
+        `${process.env.REACT_APP_API_URL}/api/admin/assign-team`,
         { userId: selectedUser, teamId: selectedTeam },
         { headers: { Authorization: `Bearer ${token}` } }
       );
