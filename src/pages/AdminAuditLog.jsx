@@ -8,7 +8,7 @@ export default function AdminAuditLogs() {
   useEffect(() => {
     const fetchLogs = async () => {
       try {
-        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/admin/audit-logs`, {
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/admin/audit-logs`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setLogs(res.data);

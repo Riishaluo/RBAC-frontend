@@ -26,7 +26,7 @@ export default function CreateUser() {
 
     try {
       const res = await axios.post(
-        `${process.env.REACT_APP_API_URL}/api/admin/create-user`,
+        `${import.meta.env.VITE_API_URL}/api/admin/create-user`,
         { email, password },
         { headers: { Authorization: `Bearer ${token}` } }
       );

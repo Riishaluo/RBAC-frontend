@@ -12,7 +12,7 @@ export default function AssignRoles() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/admin/users`, {
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/admin/users`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUsers(res.data);
@@ -29,7 +29,7 @@ export default function AssignRoles() {
 
     try {
       await axios.put(
-        `${process.env.REACT_APP_API_URL}/api/admin/update-user-role/${userId}`,
+        `${import.meta.env.VITE_API_URL}/api/admin/update-user-role/${userId}`,
         { role },
         { headers: { Authorization: `Bearer ${token}` } }
       );

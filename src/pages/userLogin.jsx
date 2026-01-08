@@ -16,7 +16,7 @@ const UserLogin = () => {
 
         try {
             const res = await axios.post(
-                `${process.env.REACT_APP_API_URL}/api/auth/user-login`,
+                `${import.meta.env.VITE_API_URL}/api/auth/user-login`,
                 { email, password }
             );
 
@@ -25,7 +25,7 @@ const UserLogin = () => {
                 res.data.token
             );
 
-            navigate("/userDashboard"); // always user dashboard
+            navigate("/userDashboard"); 
         } catch (err) {
             setError(err.response?.data?.message || "Login failed");
         }
