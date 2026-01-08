@@ -9,6 +9,7 @@ export default function Sidebar() {
     { name: "Assign Roles", path: "/admin/assign-roles" },
     { name: "Teams", path: "/admin/teams" },
     { name: "Audit Logs", path: "/admin/audit-logs" },
+    { name: "go to user login", path: "/user-login" }
   ];
 
   return (
