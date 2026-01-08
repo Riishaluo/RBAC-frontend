@@ -18,7 +18,7 @@ const UserDashboard = () => {
 
     const fetchUserTeam = async () => {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/user/${user.id}`, {
+        const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/user/${user.id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -28,7 +28,7 @@ const UserDashboard = () => {
           setTeam(userData.team);
 
           const teamRes = await axios.get(
-            `${import.meta.env.VITE_API_URL}/api/user/teams/${userData.team._id}/users`,
+            `${import.meta.env.VITE_API_BASE_URL}/api/user/teams/${userData.team._id}/users`,
             { headers: { Authorization: `Bearer ${token}` } }
           );
 

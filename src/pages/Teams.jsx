@@ -13,7 +13,7 @@ export default function Teams() {
   useEffect(() => {
     const fetchTeams = async () => {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/admin/teams`, {
+        const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/admin/teams`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setTeams(res.data);

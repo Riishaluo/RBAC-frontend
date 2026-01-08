@@ -7,12 +7,12 @@ export default function AssignRoles() {
   const [users, setUsers] = useState([]);
   const [userId, setUserId] = useState("");
   const [role, setRole] = useState("");
-
+  console.log(userId)
   // Fetch users
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/admin/users`, {
+        const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/admin/users`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUsers(res.data);
@@ -28,8 +28,8 @@ export default function AssignRoles() {
     if (!userId || !role) return alert("Please select user and role");
 
     try {
-      await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/admin/update-user-role/${userId}`,
+      await axios.put(
+        `${import.meta.env.VITE_API_BASE_URL}/api/admin/update-user-role/${userId}`,
         { role },
         { headers: { Authorization: `Bearer ${token}` } }
       );
