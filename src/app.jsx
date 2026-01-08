@@ -6,7 +6,7 @@ import UserLogin from "./pages/userLogin";
 import UserDashboard from "./pages/userDashboard";
 import AdminAuditLogs from "./pages/AdminAuditLog";
 import AssignRoles from "./pages/AssignRoles";
-import Roles from "./pages/Role";
+// import Roles from "./pages/Role";
 import Teams from "./pages/Teams";
 
 import { AuthProvider } from "./context/AuthContext";
@@ -32,7 +32,7 @@ export default function App() {
           >
             <Route path="create-user" element={<CreateUser />} />
             <Route path="audit-logs" element={<AdminAuditLogs />} />
-            <Route path="roles" element={<Roles />} />
+            {/* <Route path="roles" element={<Roles />} /> */}
             <Route path="assign-roles" element={<AssignRoles />} />
             <Route path="teams" element={<Teams />} />
           </Route>

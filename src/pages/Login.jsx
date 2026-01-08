@@ -11,47 +11,27 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const log = async () => {
-    setError(""); 
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setError("");
 
     try {
-      console.log("Logging in with:", { email, password });
-
       const res = await axios.post(
         "http://localhost:5000/api/auth/login",
         { email, password }
       );
 
-      console.log("Axios response:", res);
-
-      const { token, isAdmin } = res.data;
-
-      if (!token) {
-        throw new Error("Token missing from response");
-      }
-
       login(
-        { email, isAdmin }, 
-        token               
+        { id: res.data.user.id, email: res.data.user.email, isAdmin: res.data.user.isAdmin },
+        res.data.token
       );
 
-      console.log(
-        `Navigating to ${isAdmin ? "admin" : "user"} dashboard`
-      );
-
-      navigate(isAdmin ? "/admin/create-user" : "/user");
+      navigate("/admin/create-user"); // always admin dashboard
     } catch (err) {
-      console.error("Login error:", err);
-
-      const message =
-        err.response?.data?.message ||
-        err.message ||
-        "Invalid email or password";
-
-      setError(message);
-      alert("Login failed: " + message);
+      setError(err.response?.data?.message || "Login failed");
     }
   };
+
 
   return (
     <div style={styles.container}>
@@ -82,7 +62,7 @@ export default function Login() {
           />
         </div>
 
-        <button onClick={log} style={styles.button}>
+        <button onClick={handleLogin} style={styles.button}>
           Login
         </button>
       </div>

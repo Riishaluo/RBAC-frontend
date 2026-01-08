@@ -5,7 +5,7 @@ export default function Sidebar() {
 
   const links = [
     { name: "Create User", path: "/admin/create-user" },
-    { name: "Roles", path: "/admin/roles" },
+    // { name: "Roles", path: "/admin/roles" },
     { name: "Assign Roles", path: "/admin/assign-roles" },
     { name: "Teams", path: "/admin/teams" },
     { name: "Audit Logs", path: "/admin/audit-logs" },

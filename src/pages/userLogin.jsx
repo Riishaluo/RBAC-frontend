@@ -15,22 +15,22 @@ const UserLogin = () => {
         setError("");
 
         try {
-            const res = await axios.post("http://localhost:5000/api/auth/user-login", {
-                email,
-                password,
-            });
+            const res = await axios.post(
+                "http://localhost:5000/api/auth/user-login",
+                { email, password }
+            );
 
-            login({
-                id: res.data.user.id,
-                email: res.data.user.email,
-                isAdmin: res.data.user.isAdmin  
-            }, res.data.token);
-            navigate("/userDashboard");
+            login(
+                { id: res.data.user.id, email: res.data.user.email, isAdmin: res.data.user.isAdmin },
+                res.data.token
+            );
+
+            navigate("/userDashboard"); // always user dashboard
         } catch (err) {
-            console.error(err);
             setError(err.response?.data?.message || "Login failed");
         }
     };
+
 
     return (
         <div style={styles.container}>
